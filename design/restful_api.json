@@ -1,0 +1,49 @@
+
+
+HTTP url/clothmatch/query POST
+
+{ 
+"customer_id": 1,
+"clothing":[1,3,6,8,9,]
+}
+
+
+
+
+HTTP 200 
+{
+	"customer_id": 1,
+	"clothings":[
+		{
+			"id":1
+			"match_point: 98,
+			"waist": +1,
+			"hips": +2,
+			"bust":-1
+		},
+		{
+			"id":2
+			"match_point": 99,
+			"waist": +1,
+			"hips": +2,
+			"bust":-1
+		},
+		{
+			"id":3
+			"match_point": 88,
+			"waist": +1,
+			"hips": +2,
+			"bust":-1
+		}
+	]
+}
+
+
+{
+	"clothings": 
+	[
+		{"bust": 3, "id": 1, "waist": 1, "match_point": 98, "hips": 2}, 
+		{"bust": 3, "id": 1, "waist": 1, "match_point": 98, "hips": 2}, 
+		{"bust": 3, "id": 1, "waist": 1, "match_point": 98, "hips": 2}
+	], 
+"customer_id": 1}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="wangjing" >
+
+    <title>Shop Item - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-item.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Clothatar Powered</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="collection.html">Collection<span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Cloathatar match 95%</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <h6>Measurement Breakdown</h6>
+                <p class="card-text">Size: AU 12<p>
+                <p>Bust: 79 mm</p>
+                <p>waist: 61 mm</p>
+                <p>hips: 89</p>
+              </div>
+              <div class="col-lg-3">
+                <div class="card mt-3"><SPAN class="image-frame">
+                  <img class="icon icon-quick-view" src="img/female_3-bands_YYY.png" height="180px" width="60px" alt="">
+                </span>
+                </div>
+              </div>
+          </div>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-3">
+          <div class="card mt-3"><SPAN class="image-frame">
+            <a href="index.html" >
+              <img class="icon icon-quick-view" src="img/p-1-1.jpg" height="200px" width="175px" alt="">
+            </a>
+          </span>
+            <div class="card-body">
+              <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Clothatar match 98%</button>
+              <p>
+              <h6 class="card-text">Suggested size: AU 12</h6>
+
+              <p class="card-text">Atmos&Here<p>
+              <h6>$24.99</h6>
+              <p class="card-text">Elise Ruffle Wrap Dress</p>
+              <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+              4.0 stars
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card mt-3"><SPAN class="image-frame">
+            <img class="icon icon-quick-view" src="img/prod2.jpg" height="200px" width="175px" alt="">
+          </span>
+            <div class="card-body">
+              <h6 class="card-title">Clothatar match 85%</h6>
+              <p class="card-text">Atmos&Here<p>
+              <h6>$24.99</h6>
+              <p class="card-text">Golden Flower Midi Dress</p>
+              <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+              4.0 stars
+            </div>
+          </div>
+        </div>      </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+<script>
+
+$("#updateMatchData").click(function(){
+  $.get("http://127.0.0.1:8000/clothmatch/query", function(data, status){
+      console.log(status);
+      document.getElementById("tasks_per_node_data").innerHTML = createNodeTableData(data);
+      // $("#tasks_per_node_data").innerHTML = createNodeTableData(data);
+    });
+  });
+</script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

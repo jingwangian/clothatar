@@ -1,0 +1,81 @@
+{% extends "clothatar/base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Cloathatar match 95%</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <h6>Measurement Breakdown</h6>
+                <p class="card-text">Size: AU 12<p>
+                <p>Bust: 79 mm</p>
+                <p>waist: 61 mm</p>
+                <p>hips: 89</p>
+              </div>
+              <div class="col-lg-3">
+                <div class="card mt-3"><SPAN class="image-frame">
+                  <img class="icon icon-quick-view" src="{% static 'img/female_3-bands_YYY.png' %}" height="180px" width="60px" alt="">
+                </span>
+                </div>
+              </div>
+          </div>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-3">
+          <div class="card mt-3"><SPAN class="image-frame">
+            <a href="{% url "clothatar:cloth_detail" 1 %}" >
+              <img class="icon icon-quick-view" src="{% static 'img/p-1-1.jpg' %}" height="200px" width="175px" alt="">
+            </a>
+          </span>
+            <div class="card-body">
+              <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Clothatar match 98%</button>
+              <p>
+              <h6 class="card-text">Suggested size: AU 12</h6>
+
+              <p class="card-text">Atmos&Here<p>
+              <h6>$24.99</h6>
+              <p class="card-text">Elise Ruffle Wrap Dress</p>
+              <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+              4.0 stars
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card mt-3"><SPAN class="image-frame">
+            <a href="{% url "clothatar:cloth_detail" 2 %}" >
+              <img class="icon icon-quick-view" src="{% static 'img/p-2-1.jpg' %}" height="200px" width="175px" alt="">
+            </a>
+          </span>
+            <div class="card-body">
+              <h6 class="card-title">Clothatar match 85%</h6>
+              <p class="card-text">Atmos&Here<p>
+              <h6>$24.99</h6>
+              <p class="card-text">Golden Flower Midi Dress</p>
+              <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+              4.0 stars
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- /.container -->
+{% endblock %}
