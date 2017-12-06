@@ -27,7 +27,11 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li class="active"><a href="{%url 'clothatar:cloth_list'%}">Home</a></li>
-      <li><a href="#">Login</a></li>
+      {% if user_login == 1 %}
+      <li><a href="{%url 'clothatar:user_logout'%}">Logout</a></li>
+      {% else %}
+      <li><a href="{%url 'clothatar:user_login'%}">Login</a></li>
+      {% endif %}
     </ul>
   </div>
 </nav>
@@ -44,6 +48,9 @@
         <p class="m-0 text-muted">Copyright &copy; Clothatar Website 2017</p>
       </div>
     </footer>
+
+    {% block javascript %}
+    {% endblock %}
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

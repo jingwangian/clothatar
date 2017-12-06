@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -12,13 +14,33 @@ from .models import ClothingAvatar
 # Create your views here.
 
 
+@login_required(login_url='/admin/login/')
+def user_login(request):
+    return HttpResponse('You have login')
+
+
+def user_logout(request):
+    logout(request)
+    return HttpResponse('You have logout')
+
+
 def cloth_list(request):
-    return render(request, 'clothatar/list.html', {})
+    if not request.user.is_authenticated:
+        user_login = 0
+    else:
+        user_login = 1
+
+    return render(request, 'clothatar/list.html', {'user_login': user_login})
 
 
 def cloth_detail(request, family_id):
+    if not request.user.is_authenticated:
+        user_login = 0
+    else:
+        user_login = 1
+
     pic_name = 'img/p-{}-1.jpg'.format(family_id)
-    return render(request, 'clothatar/details.html', {'pic_name': pic_name})
+    return render(request, 'clothatar/details.html', {'pic_name': pic_name, 'user_login': user_login})
 
 
 def match_query(request):
