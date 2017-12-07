@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'webserver.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default-remote': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'clothatar',
         'USER': 'ian',
@@ -92,7 +92,7 @@ DATABASES = {
         'PORT': '5432',
     },
 
-    'default_postgres_local': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'clothatar',
         'USER': 'wangj',

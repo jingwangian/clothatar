@@ -1,8 +1,6 @@
 {% extends "clothatar/base.html" %}
 {% load staticfiles %}
 {% block content %}
-      <div class="row">
-
         <div class="col-lg-8">
 
           <div class="card mt-4">
@@ -48,102 +46,53 @@
             <img src="{% static 'img/atmos-here.jpg' %}" alt="Nature" style="width:30%">
           </a>
         </div>
-          <h4 class="my-4">Elise Ruffle Wrap Dress</h1>
+        <div>
+          <h4 class="my-4">{{ match_result.description }}</h4>
     	    <form action="">
             <div class="form-group">
-            <select name="Size select" onchange="showNodeLog(this.value)">
-            <option value="">Pick a size ...         :</option>
-    <!--        {% for node_name in node_name_list %}-->
-            	<option value="AU 6">"AU 6"</option>
+            <select name="Size select">
+	            <option value="">Pick a size ...</option>
+	         	<option value="AU 6">"AU 6"</option>
             	<option value="AU 8">"AU 8"</option>
         			<option value="AU 10">"AU 10"</option>
         			<option value="AU 12">"AU 12"</option>
         			<option value="AU 14">"AU 14"</option>
-    <!--        {% endfor %}-->
             </select>
-            <p>suggested size : 6</p>
-            <button type="button" id="matchquery" class="btn btn-primary">match</button>
+            </div>
+          </form>
+            <p>Clothatar Suggested Size : {{ match_result.suggest_size }}</p>
+            <button type="button" id="matchquery" class="btn btn-primary" onclick="document.getElementById('table_detail').style.display='block'">match detail</button>
 
-      <div class="table-responsive">
+		</div>
+
+
+      <div class="table-responsive" id="table_detail" style="display:none">
         <table class="table table-striped">
           <thead>
             <tr>
-
-              <th>clothid</th>
               <th>size</th>
               <th>matchpoint</th>
+              <th>waist</th>
+              <th>hips</th>
+              <th>bust</th>
 
             </tr>
           </thead>
           <tbody id="matchpoint_result">
-
+            {% for match_info in match_result.clothings %}
             <tr>
-              <td>1</td>
-              <td>AU 6</td>
-              <td>98%</td>
+              <td>{{ match_info.size }}</td>
+              <td>{{ match_info.match_point }}</td>
+              <td>{{ match_info.waist }}</td>
+              <td>{{ match_info.hips }}</td>
+              <td>{{ match_info.bust }}</td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>AU 8</td>
-              <td>100%</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>AU 10</td>
-              <td>100%</td>
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
 
-      </div>
-        <br>
-      </form>
-
   </div>
-        <!-- /.col-lg-3 -->
-  </div>
-
-
-{% endblock %}
-
-{% block javascript %}
-
-$("#matchquery").click(function(){
-  $.post("http://127.0.0.1:8000/clothmatch/query",
-  {
-    customer_id:1,
-    clothing: 1
-  },
-    function(data, status){
-      console.log(status);
-      alert("Data: " + data + "\nStatus: " + status);
-      document.getElementById("matchpoint_result").innerHTML = createNodeTableData(data);
-      // $("#tasks_per_node_data").innerHTML = createNodeTableData(data);
-    },
-    dataType="jsonp");
-  });
-
-function createNodeTableData(json_data){
-  var text = "";
-  var row;
-  var rol;
-  var num;
-
-  cloth_data = json_data.clothings;
-  //row_template={'id': 1, 'node_name': 'node1', 'address': 'addr1', 'processes': 7, 'disk_space': '30GB', 'route_id': 1, 'finished_tasks': 900, 'failed_tasks': 900};
-  row_template={'id': 1, 'size': 'ub1','matchpoint': 100}
-  for (num=0; num< cloth_data.length; num++) {
-    text +='<tr>\n';
-    row = cloth_data[num];
-    for (col in row_template){
-      text =text + '<td>'+row[col]+'</td>\n';
-    }
-    text +='</tr>\n';
-  }
-  // console.log(text);
-
-  return text;
-}
+       <!-- /.col-lg-3 -->
 
 {% endblock %}
