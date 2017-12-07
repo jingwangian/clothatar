@@ -60,13 +60,14 @@
             </select>
             </div>
           </form>
+          {% if user_login == 1 %}
             <p>Clothatar Suggested Size : {{ match_result.suggest_size }}</p>
-            <button type="button" id="matchquery" class="btn btn-primary" onclick="document.getElementById('table_detail').style.display='block'">match detail</button>
-
+<!--            <button type="button" id="matchquery" class="btn btn-primary" onclick="document.getElementById('table_detail').style.display='block'">match detail</button>-->
+            {% endif %}
 		</div>
 
-
-      <div class="table-responsive" id="table_detail" style="display:none">
+    {% if user_login == 1 %}
+      <div class="table-responsive" id="table_detail" >
         <table class="table table-striped">
           <thead>
             <tr>
@@ -92,6 +93,9 @@
         </table>
       </div>
 
+      {% endif %}
+
+    <button type="button" id="buy" class="btn btn-primary btn-block" >buy</button>
   </div>
        <!-- /.col-lg-3 -->
 
